@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function TopAnime({ title, id, url, score, img }) {
-   const imgPath = '';
+export default function TopAnime({ title, id, score, img }) {
    return (
       <div>
          <h1>{title}</h1>

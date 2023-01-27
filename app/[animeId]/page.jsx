@@ -22,11 +22,11 @@ export default async function AnimeDetail({ params }) {
                      src={animeData.data.images.jpg.large_image_url}
                      alt={animeData.data.title}
                      width={425}
-                     height={550}
+                     height={600}
                      priority
                      style={{
                         width: 425,
-                        height: 550,
+                        height: 600,
                      }}
                   />
                </Link>
