@@ -1,24 +1,10 @@
-import TopAnime from '@/component/TopAnime';
+import './globals.css';
+import SearchAnime from '@/components/SearchAnime';
 
-export default async function Home() {
-   const data = await fetch(`https://api.jikan.moe/v4/top/anime`);
-   const response = await data.json();
+export default function Home() {
    return (
-      <main>
-         <div className="grid gap-10 grid-cols-fluid">
-            {response.data.map((anime) => {
-               return (
-                  <TopAnime
-                     key={anime.mal_id}
-                     id={anime.mal_id}
-                     url={anime.url}
-                     title={anime.title}
-                     score={anime.score}
-                     img={anime.images.jpg}
-                  />
-               );
-            })}
-         </div>
-      </main>
+      <div>
+         <SearchAnime />
+      </div>
    );
 }
