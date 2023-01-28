@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
             <>
                <Nav />
             </>
-            <div className="mx-24 py-14">{children}</div>
+            <div className="mx-20 py-14">{children}</div>
          </body>
       </html>
    );
