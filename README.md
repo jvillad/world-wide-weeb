@@ -1,2 +1,3 @@
-# anime-list
- Anime search and display anime details
+# anime-list (in progress) ꩜
+
+World wide weeb! 😅 Discovering anime and manga.
