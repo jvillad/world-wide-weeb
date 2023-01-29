@@ -8,8 +8,7 @@ import 'slick-carousel/slick/slick-theme.css';
 
 export default function ImageCarousel({ data }) {
    return (
-      <div className="mt-24">
-         <h1 className="p-2 font-bold">Top Airing Anime</h1>
+      <>
          <Slider {...sliderSettings}>
             {data?.map((image) => {
                return (
@@ -34,6 +33,6 @@ export default function ImageCarousel({ data }) {
                );
             })}
          </Slider>
-      </div>
+      </>
    );
 }
