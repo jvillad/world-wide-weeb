@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function TopAnime({ title, id, score, img }) {
+export default function TopAnime({ title, id, img }) {
    return (
-      <div>
-         <h1>{title}</h1>
-         <h2>{score}</h2>
+      // <div className="grid place-items-center p-2 border-solid border-2 rounded-xl bg-[#011627]">
+      <div className="grid place-items-center p-2 rounded">
          <Link href={`${id}`}>
             <Image
                src={img.image_url}
@@ -16,7 +15,11 @@ export default function TopAnime({ title, id, score, img }) {
                   width: 225,
                   height: 330,
                }}
+               className="rounded-xl"
             />
+            <div className="w-[230px]">
+               <h1 className="text-sm p-2">{title}</h1>
+            </div>
          </Link>
       </div>
    );
