@@ -1,4 +1,3 @@
-import SearchAnime from '@/components/SearchAnime';
 import DisplaySearch from '../DisplaySearch';
 
 export default async function SearchResult({ params }) {
@@ -7,9 +6,8 @@ export default async function SearchResult({ params }) {
    const animeData = await data.json();
    return (
       <>
-         <SearchAnime />
          <div className="grid gap-10 grid-cols-fluid">
-            {animeData?.data.map((anime) => {
+            {animeData.data.map((anime) => {
                return (
                   <DisplaySearch
                      key={anime.mal_id}
