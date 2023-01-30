@@ -1,3 +1,4 @@
+import AddToList from '@/components/AddToList';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -13,7 +14,7 @@ export default async function AnimeDetail({ params }) {
             <div className="py-4">
                <Link
                   href={
-                     animeData.data.trailer.url
+                     animeData.data?.trailer.url
                         ? animeData.data.trailer.url
                         : '#'
                   }
@@ -30,6 +31,7 @@ export default async function AnimeDetail({ params }) {
                      }}
                   />
                </Link>
+               <AddToList animeDetails={animeData} />
             </div>
             <div className="py-2 w-1/2">
                <h1 className="text-xl font-bold border-b-2">
