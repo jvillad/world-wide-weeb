@@ -6,7 +6,7 @@ import SearchAnime from './SearchAnime';
 function Nav() {
    const [nav, setNav] = useState(false);
    return (
-      <nav className="px-8">
+      <nav className="px-8 py-10">
          {/* main container */}
          <div className="max-w-7xl mx-auto">
             {/* wrapper for all links */}
@@ -17,7 +17,7 @@ function Nav() {
                   <div>
                      <Link
                         href="#"
-                        className="flex items-center p-5 text-[#011627]"
+                        className="flex items-center p-5 text-[#011627] hover:text-gray-900"
                      >
                         <svg
                            className="h-6 w-6"
@@ -45,17 +45,20 @@ function Nav() {
                   <div className="hidden md:flex items-center space-x-10 ">
                      <Link
                         href="/"
-                        className="p-5 text-gray-500 font-semibold ml-10"
+                        className="p-5 text-gray-600 font-semibold ml-10  hover:text-gray-900"
                      >
                         Home
                      </Link>
                      <Link
-                        href="/ranking"
-                        className="p-5 text-gray-500 font-semibold"
+                        href={`/goatedanime/${1}`}
+                        className="p-5 text-gray-600 font-semibold hover:text-gray-900"
                      >
                         GOATED Animes
                      </Link>
-                     <a href="#" className="p-5 text-gray-500 font-semibold">
+                     <a
+                        href="#"
+                        className="p-5 text-gray-600 font-semibold hover:text-gray-900"
+                     >
                         Manga
                      </a>
                   </div>
@@ -63,12 +66,15 @@ function Nav() {
 
                {/* third child element for auths - secondary nav*/}
                <div className="hidden md:flex items-center space-x-5 ">
-                  <a href="#" className="p-5">
+                  <a
+                     href="#"
+                     className="p-5 text-gray-600 font-semibold hover:text-gray-900"
+                  >
                      Login
                   </a>
                   <a
                      href="#"
-                     className="py-2 px-4  bg-[#011627] text-[#fff] rounded-lg"
+                     className="py-2 px-4 bg-[#ff9f1c] text-[#011627] rounded-lg text-sm font-semibold"
                   >
                      Signup
                   </a>
@@ -127,7 +133,7 @@ function Nav() {
          <div className={!nav ? 'hidden' : ''}>
             <SearchAnime />
             <a
-               href="/ranking"
+               href={`/goatedanime/${1}`}
                className="block py-4 px-4 text-sm hover:bg-blue-600 hover:text-white rounded"
             >
                GOATED Animes

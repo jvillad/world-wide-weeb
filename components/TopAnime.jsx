@@ -3,7 +3,6 @@ import Image from 'next/image';
 
 export default function TopAnime({ title, id, img }) {
    return (
-      // <div className="grid place-items-center p-2 border-solid border-2 rounded-xl bg-[#011627]">
       <div className="grid place-items-center p-2 rounded">
          <Link href={`${id}`}>
             <Image
