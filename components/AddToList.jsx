@@ -1,7 +1,18 @@
 'use client';
 import { useState } from 'react';
+
 export default function AddToList({ animeDetails }) {
    const [watch, setWatch] = useState(false);
+
+   // get previous watch list and check if anime already added to watch list
+   const watchList = JSON.parse(localStorage.getItem('toWatch'));
+   const exist =
+      watchList &&
+      watchList.some((anime) => anime.animeId === animeDetails.data.mal_id);
+   if (exist) {
+      return <>In watchlist</>;
+   }
+
    const addToWatchlist = () => {
       setWatch(true);
       // get previous added to watch
@@ -9,15 +20,15 @@ export default function AddToList({ animeDetails }) {
       // get the details of current added to watch
       const toWatchDetails = [
          {
-            title: animeDetails.data.title,
-            toWatchImg: animeDetails.data.images.jpg.image_url,
-            toWatch: true,
+            animeId: animeDetails.data.mal_id,
+            animeTitle: animeDetails.data.title,
+            animeImg: animeDetails.data.images.jpg.image_url,
+            toWatchStatus: true,
          },
       ];
       if (toWatch) {
          // merge the previous and the current
-         const updatedToWatch = [...toWatchDetails, ...toWatch];
-         console.log(updatedToWatch);
+         const updatedToWatch = [...toWatch, ...toWatchDetails];
          localStorage.setItem('toWatch', JSON.stringify(updatedToWatch));
          return;
       }
@@ -25,8 +36,6 @@ export default function AddToList({ animeDetails }) {
    };
 
    return (
-      <button onClick={addToWatchlist}>
-         {watch ? 'Added to watchlist' : '+ Add To Watchlist'}
-      </button>
+      <button onClick={addToWatchlist}>{!watch && '+ Add To Watchlist'}</button>
    );
 }

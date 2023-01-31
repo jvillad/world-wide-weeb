@@ -42,22 +42,22 @@ function Nav() {
                   </div>
 
                   {/* main links - primary nav */}
-                  <div className="hidden md:flex items-center space-x-10 ">
+                  <div className="hidden  md:flex items-center space-x-10 ">
                      <Link
                         href="/"
-                        className="p-5 text-gray-600 font-semibold ml-10  hover:text-gray-900"
+                        className="p-5 text-sm text-gray-600 font-semibold ml-10  hover:text-gray-900"
                      >
                         Home
                      </Link>
                      <Link
                         href={`/goatedanime/${1}`}
-                        className="p-5 text-gray-600 font-semibold hover:text-gray-900"
+                        className="p-5 text-sm text-gray-600 font-semibold hover:text-gray-900"
                      >
                         GOATED Animes
                      </Link>
                      <a
                         href="#"
-                        className="p-5 text-gray-600 font-semibold hover:text-gray-900"
+                        className="p-5 text-sm text-gray-600 font-semibold hover:text-gray-900"
                      >
                         Manga
                      </a>
