@@ -13,18 +13,19 @@ export default async function GoatedAnime({ params }) {
       <div className="text-center py-10">
          <h1 className="py-10">Goated Anime List</h1>
          <div className="grid gap-10 grid-cols-fluid">
-            {response?.data.map((anime) => {
-               return (
-                  <TopAnime
-                     key={anime.mal_id}
-                     id={anime.mal_id}
-                     url={anime.url}
-                     title={anime.title}
-                     score={anime.score}
-                     img={anime.images.jpg}
-                  />
-               );
-            })}
+            {response &&
+               response?.data.map((anime) => {
+                  return (
+                     <TopAnime
+                        key={anime.mal_id}
+                        id={anime.mal_id}
+                        url={anime.url}
+                        title={anime.title}
+                        score={anime.score}
+                        img={anime.images.jpg}
+                     />
+                  );
+               })}
          </div>
          <ViewMore currentPage={response?.pagination.current_page} />
       </div>
