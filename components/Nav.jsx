@@ -42,7 +42,7 @@ function Nav() {
                   </div>
 
                   {/* main links - primary nav */}
-                  <div className="hidden  md:flex items-center space-x-10 ">
+                  <div className="hidden lg:flex items-center space-x-10">
                      <Link
                         href="/"
                         className="p-5 text-sm text-gray-600 font-semibold ml-10  hover:text-gray-900"
@@ -65,7 +65,7 @@ function Nav() {
                </div>
 
                {/* third child element for auths - secondary nav*/}
-               <div className="hidden md:flex items-center space-x-5 ">
+               <div className="hidden lg:flex items-center space-x-5 ">
                   <a
                      href="#"
                      className="p-5 text-gray-600 font-semibold hover:text-gray-900"
@@ -81,7 +81,7 @@ function Nav() {
                </div>
 
                {/* mobile nav */}
-               <div className="md:hidden flex items-center">
+               <div className="lg:hidden flex items-center">
                   {!nav ? (
                      <button
                         onClick={() => {
