@@ -5,7 +5,7 @@ export default async function TopAiring() {
    const topAiringAnime = await data.json();
    let animeDetails = [];
    return (
-      <div className="mt-24">
+      <div>
          <h1 className="p-2 font-bold">Top Airing Anime</h1>
          {topAiringAnime.data?.map((anime) => {
             animeDetails.push({
