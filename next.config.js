@@ -4,7 +4,7 @@ const nextConfig = {
       appDir: true,
    },
    images: {
-      domains: ['cdn.myanimelist.net'],
+      domains: ['cdn.myanimelist.net', 'media.kitsu.io'],
    },
 };
 
