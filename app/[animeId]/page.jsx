@@ -6,9 +6,10 @@ export default async function AnimeDetail({ params }) {
    const { animeId } = params;
    const data = await fetch(`https://api.jikan.moe/v4/anime/${animeId}`);
    const animeData = await data.json();
+
    return (
       <>
-         <div className="flex flex-col items-center text-center xl:flex xl:flex-row xl:justify-between xl:text-left mb-[10px]">
+         <div className="flex flex-col items-center text-center xl:flex xl:flex-row xl:justify-between xl:text-left mb-[10px] mt-10">
             <div>
                <h1 className="text-[40px] font-bold text-gray-700 px-1">
                   {animeData.data.title}

@@ -4,8 +4,8 @@ import { useState } from 'react';
 export default function AnimeInfoNav() {
    const [open, setOpen] = useState(false);
    return (
-      <nav className=" flex justify-center items-center">
-         <div className="rounded-md w-full bg-gray-800 xs:min-w-[250px]">
+      <nav className="flex justify-center items-center relative mt-40">
+         <div className="rounded-md w-full bg-gray-800 xs:min-w-[250px] ">
             <div className="flex flex-row-reverse p-2 md:hidden">
                <button
                   onClick={() => {
