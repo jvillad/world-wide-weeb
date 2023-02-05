@@ -10,8 +10,10 @@ export default async function GoatedAnime({ params }) {
    const response = await data.json();
 
    return (
-      <div className="text-center py-10">
-         <h1 className="py-10">Goated Anime List</h1>
+      <div className="mx-10 text-center py-20">
+         <h1 className="py-10 text-[30px] text-gray-600 font-bold">
+            GOATED Animes
+         </h1>
          <div className="grid gap-10 grid-cols-fluid">
             {response &&
                response?.data.map((anime) => {
