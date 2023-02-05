@@ -8,7 +8,7 @@ function Nav() {
    return (
       <nav className="py-5 w-full absolute top-0">
          {/* main container */}
-         <div className="mx-20 bg-gradient-to-r from-gray-900 via-purple-600 to-pink-700 opacity-85 rounded-xl">
+         <div className="mx-10 bg-gradient-to-r from-gray-900 via-purple-600 to-pink-700 opacity-85 rounded-xl">
             {/* wrapper for all links */}
             <div className="flex justify-between">
                {/* one child element for branding and main links */}
@@ -62,13 +62,14 @@ function Nav() {
                </div>
 
                {/* third child element for auths - secondary nav*/}
-               <div className="hidden lg:flex items-center space-x-5 mr-5">
+               <div className="hidden items-center lg:flex mr-5">
                   <a
                      href="#"
-                     className="p-5 text-white font-semibold hover:text-gray-900"
+                     className="p-5 text-white font-semibold hover:text-gray-900 mr-5"
                   >
                      Login
                   </a>
+
                   <a
                      href="#"
                      className="py-2 px-4 bg-[#ff9f1c] text-[#011627] rounded-lg text-sm font-semibold"
@@ -86,7 +87,7 @@ function Nav() {
                         }}
                      >
                         <svg
-                           className="w-6 h-6"
+                           className="w-7 h-7 stroke-2 mr-5 text-white"
                            xmlns="http://www.w3.org/2000/svg"
                            fill="none"
                            viewBox="0 0 24 24"
@@ -112,7 +113,7 @@ function Nav() {
                            viewBox="0 0 24 24"
                            strokeWidth={1.5}
                            stroke="currentColor"
-                           className="w-6 h-6"
+                           className="w-7 h-7 mr-5 stroke-2 text-white"
                         >
                            <path
                               strokeLinecap="round"
