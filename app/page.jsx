@@ -10,7 +10,7 @@ export default function Home() {
          <>
             <ToWatch />
          </>
-         <div className="mx-20">
+         <div className="mx-10">
             <PageWrapper>
                <TopAiring />
                <TopUpcoming />
