@@ -11,6 +11,10 @@ export default function RootLayout({ children }) {
                <Nav />
             </>
             <div>{children}</div>
+            <div className="text-xs text-center my-10 mx-10 text-gray-600">
+               AnimeDB - 🫥{' '}
+            </div>
+            ;
          </body>
       </html>
    );
