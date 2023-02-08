@@ -1,7 +1,8 @@
 import AddToList from '@/components/AddToList';
 import Image from 'next/image';
 import Link from 'next/link';
-
+// TODO: add holder in case there's no available anime trailer
+// TODO: additional validation
 export default async function AnimeDetail({ params }) {
    const { animeId } = params;
    const data = await fetch(`https://api.jikan.moe/v4/anime/${animeId}`);
