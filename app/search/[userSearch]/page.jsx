@@ -5,9 +5,9 @@ export default async function SearchResult({ params }) {
    const data = await fetch(`https://api.jikan.moe/v4/anime?q=${userSearch}`);
    const animeData = await data.json();
    return (
-      <>
+      <div className="my-36 mx-10 ">
          <PageWrapper>
-            <div className="grid gap-10 grid-cols-fluid">
+            <div className="grid grid-cols-fluid gap-10">
                {animeData.data.map((anime) => {
                   return (
                      <DisplaySearch
@@ -20,6 +20,6 @@ export default async function SearchResult({ params }) {
                })}
             </div>
          </PageWrapper>
-      </>
+      </div>
    );
 }

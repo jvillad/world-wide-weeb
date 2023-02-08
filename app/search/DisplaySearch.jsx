@@ -3,7 +3,6 @@ import Image from 'next/image';
 export default function DisplaySearch({ id, imgUrl, animeTitle }) {
    return (
       <div>
-         <h1>{animeTitle}</h1>
          <Link href={`${id}`}>
             <Image
                src={imgUrl.image_url}
@@ -16,6 +15,7 @@ export default function DisplaySearch({ id, imgUrl, animeTitle }) {
                }}
             />
          </Link>
+         <p className="p-2 text-xs">{animeTitle}</p>
       </div>
    );
 }

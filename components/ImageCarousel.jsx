@@ -47,7 +47,7 @@ export default function ImageCarousel({ data }) {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-8 h-8 stroke-2 text-gray-400"
+                  className="w-10 h-10 stroke-2 text-gray-300"
                >
                   <path
                      strokeLinecap="round"
@@ -63,7 +63,7 @@ export default function ImageCarousel({ data }) {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-8 h-8 stroke-2 text-gray-400"
+                  className="w-10 h-10 stroke-2 text-gray-300"
                >
                   <path
                      strokeLinecap="round"
