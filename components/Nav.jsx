@@ -63,13 +63,12 @@ function Nav() {
 
                {/* third child element for auths - secondary nav*/}
                <div className="hidden items-center lg:flex mr-5">
-                  <a
-                     href="#"
+                  <Link
+                     href="/login"
                      className="p-5 text-white font-semibold hover:text-gray-900 mr-5"
                   >
                      Login
-                  </a>
-
+                  </Link>
                   <a
                      href="#"
                      className="py-2 px-4 bg-[#ff9f1c] text-[#011627] rounded-lg text-sm font-semibold"
