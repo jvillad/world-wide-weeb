@@ -21,7 +21,6 @@ export default function SearchAnime() {
          <div className="relative">
             <input
                className="block p-3 xl:w-[270px] text-sm text-black bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-               id="anime-search"
                placeholder="Search anime here"
                value={search}
                onChange={(e) => {
