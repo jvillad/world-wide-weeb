@@ -5,8 +5,7 @@ export default async function TopAiring() {
    const topAiringAnime = await data.json();
    let animeDetails = [];
    return (
-      <div>
-         <h1 className="p-2 font-bold">Top Airing Anime</h1>
+      <div className="mt-6">
          {topAiringAnime.data?.map((anime) => {
             animeDetails.push({
                id: anime.mal_id,
@@ -14,7 +13,10 @@ export default async function TopAiring() {
                title: anime.title,
             });
          })}
-         <ImageCarousel data={animeDetails} />
+         <div className="max-w-[1200px] mx-auto">
+            <h1 className="p-2 font-bold">Top Airing Anime</h1>
+            <ImageCarousel data={animeDetails} />
+         </div>
       </div>
    );
 }

@@ -8,7 +8,6 @@ export default async function TopUpcoming() {
    let animeDetails = [];
    return (
       <div className="mt-10">
-         <h1 className="p-2 font-bold">Top Upcoming</h1>
          {topUpcomingAnime.data?.map((anime) => {
             animeDetails.push({
                id: anime.mal_id,
@@ -16,7 +15,11 @@ export default async function TopUpcoming() {
                title: anime.title,
             });
          })}
-         <ImageCarousel data={animeDetails} />
+
+         <div className="max-w-[1200px] mx-auto">
+            <h1 className="p-2 font-bold">Top Upcoming</h1>
+            <ImageCarousel data={animeDetails} />
+         </div>
       </div>
    );
 }
