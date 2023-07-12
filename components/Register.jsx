@@ -5,33 +5,49 @@ export default function page() {
    const [name, setName] = useState('');
    const [password, setPassword] = useState('');
    const [email, setEmail] = useState('');
+   const [displayNotif, setDisplayNotif] = useState(false);
+   const [message, setMessage] = useState('');
+   const [error, setError] = useState(false);
 
    const handleSubmit = async (e) => {
       e.preventDefault();
-
       try {
-         const response = await fetch('http://localhost:3000/api/user', {
+         const response = await fetch('http://localhost:3000/api/create', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, password }),
          });
-
+         setDisplayNotif(true);
          if (response.ok) {
             const data = await response.json();
-            console.log(data);
+            setName('');
+            setPassword('');
+            setEmail('');
+            setMessage(data.message);
          } else {
             const errorData = await response.json();
             console.error(errorData);
+            setError(true);
+            setMessage(errorData?.error);
          }
       } catch (error) {
          console.error(error);
-         console.log(error);
+         setMessage(error);
       }
    };
 
    return (
       <div className="min-h-screen flex items-center justify-center ">
          <div className="bg-white p-16 rounded shadow-2xl w-2/3 max-w-[720px]">
+            {displayNotif && (
+               <div
+                  className={`text-xl font-bold text-center my-4 ${
+                     error ? `text-[#dc3545]` : `text-[#28a745]`
+                  }`}
+               >
+                  <h1>{message}</h1>
+               </div>
+            )}
             <h2 className="text-3xl font-bold mb-10 text-gray-800">
                Create Your Account
             </h2>
