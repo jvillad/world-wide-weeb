@@ -5,9 +5,10 @@ Allows you to search and display all the details about your favorite anime, incl
 Aside from learning Next13, I built this project to share my ❤️ for animes. 
 
 ## Project Tech Stack
-- JavaScript
 - NextJs
 - Tailwind
+- Prisma
+- MongoDb
 
 ## Current UI
 <img width="1440" alt="Screenshot 2023-02-06 at 9 06 02 pm" src="https://user-images.githubusercontent.com/109568289/217118454-eec71aaa-177d-4c2d-8dc6-f80e56832d80.png">
