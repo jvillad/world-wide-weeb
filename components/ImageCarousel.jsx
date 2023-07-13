@@ -19,7 +19,7 @@ export default function ImageCarousel({ data }) {
                return (
                   <div key={image.id}>
                      <div className="w-[170px]">
-                        <Link href={`${image.id}`}>
+                        <Link href={`/anime/${image.id}`}>
                            <Image
                               src={image.url}
                               alt={`an image of ${image.title}`}

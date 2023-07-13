@@ -4,7 +4,7 @@ import Image from 'next/image';
 export default function TopAnime({ title, id, img }) {
    return (
       <div className="grid place-items-center p-2 rounded-xl bg-gray-900">
-         <Link href={`${id}`}>
+         <Link href={`/anime/${id}`}>
             <Image
                src={img.image_url}
                alt={title}
