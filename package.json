@@ -1,42 +1,41 @@
 {
-  "name": "movie-list",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@next/font": "^13.1.5",
-    "@prisma/client": "^4.16.2",
-    "@types/react": "^18.0.27",
-    "axios": "^1.4.0",
-    "bcrypt": "^5.1.0",
-    "eslint-config-next": "^13.4.9",
-    "framer-motion": "^8.5.4",
-    "jsonwebtoken": "^9.0.1",
-    "mongodb": "^5.7.0",
-    "mongoose": "^7.3.2",
-    "next": "^13.4.9",
-    "next-auth": "^4.22.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-hot-toast": "^2.4.1",
-    "react-icons": "^4.7.1",
-    "react-player": "^2.11.0",
-    "react-slick": "^0.29.0",
-    "slick-carousel": "^1.8.1"
-  },
-  "devDependencies": {
-    "@types/node": "18.11.18",
-    "autoprefixer": "^10.4.13",
-    "eslint": "^8.33.0",
-    "eslint-plugin-unused-imports": "^2.0.0",
-    "postcss": "^8.4.21",
-    "prettier": "^2.8.3",
-    "prisma": "^4.16.2",
-    "tailwindcss": "^3.2.4"
-  }
+   "name": "movie-list",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start",
+      "lint": "next lint"
+   },
+   "dependencies": {
+      "@prisma/client": "^4.16.2",
+      "@types/react": "^18.0.27",
+      "axios": "^1.4.0",
+      "bcrypt": "^5.1.0",
+      "eslint-config-next": "^13.4.9",
+      "framer-motion": "^8.5.4",
+      "jsonwebtoken": "^9.0.1",
+      "mongodb": "^5.7.0",
+      "mongoose": "^7.3.2",
+      "next": "^13.4.9",
+      "next-auth": "^4.22.1",
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0",
+      "react-hot-toast": "^2.4.1",
+      "react-icons": "^4.7.1",
+      "react-player": "^2.11.0",
+      "react-slick": "^0.29.0",
+      "slick-carousel": "^1.8.1"
+   },
+   "devDependencies": {
+      "@types/node": "18.11.18",
+      "autoprefixer": "^10.4.13",
+      "eslint": "^8.33.0",
+      "eslint-plugin-unused-imports": "^2.0.0",
+      "postcss": "^8.4.21",
+      "prettier": "^2.8.3",
+      "prisma": "^4.16.2",
+      "tailwindcss": "^3.2.4"
+   }
 }
