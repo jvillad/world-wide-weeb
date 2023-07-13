@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 export default function ToWatchCarousel({ animes }) {
    // set initial anime
+
    const [selectedImg, setSelectedImg] = useState(animes.data[0]);
    const [fullDescription, setFullDescription] = useState(false);
 
@@ -30,8 +31,8 @@ export default function ToWatchCarousel({ animes }) {
                   ` linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0)), url(${selectedImg.attributes.coverImage.original})`,
             }}
          >
-            <div className="w-full h-[600px] flex items-center">
-               <div className="mx-10">
+            <div className="w-full h-[600px] flex items-center max-w-[1400px] mx-auto">
+               <div className="mx-10 mt-52">
                   <p className="text-gray-100 text-[42px] font-semibold">
                      {selectedImg.attributes.canonicalTitle}
                   </p>
@@ -46,7 +47,7 @@ export default function ToWatchCarousel({ animes }) {
                            : 'NA'}
                      </span>
                   </p>
-                  <p className="text-sm text-gray-200 p-2 w-2/3">
+                  <p className="text-sm text-gray-200 p-2 lg:w-2/3 ">
                      {fullDescription ? synopsis : limitedDescription}{' '}
                      {!fullDescription ? (
                         <button
@@ -54,7 +55,7 @@ export default function ToWatchCarousel({ animes }) {
                               setFullDescription(true);
                            }}
                         >
-                           ... Display more
+                           ... See more
                         </button>
                      ) : (
                         <button

@@ -6,9 +6,9 @@ import SearchAnime from './SearchAnime';
 function Nav() {
    const [nav, setNav] = useState(false);
    return (
-      <nav className="py-5 w-full absolute top-0 ">
+      <nav className="py-5 w-full absolute top-0">
          <div className="bg-gradient-to-r from-gray-900 via-purple-600 to-pink-700 opacity-85">
-            <div className="flex justify-between">
+            <div className="flex justify-between max-w-[1400px] mx-auto">
                <div className="flex space-x-1">
                   <div>
                      <Link
