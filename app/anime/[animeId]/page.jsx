@@ -5,23 +5,33 @@ import Link from 'next/link';
 // TODO: additional validation
 export default async function AnimeDetail({ params }) {
    const { animeId } = params;
-   const data = await fetch(`https://api.jikan.moe/v4/anime/${animeId}`);
-   const animeData = await data.json();
+   let animeData = null;
+
+   try {
+      const data = await fetch(`https://api.jikan.moe/v4/anime/${animeId}`);
+      if (!data.ok) {
+         throw new Error('Failed to fetch anime data');
+      }
+      console.log(data);
+      animeData = await data.json();
+   } catch (error) {
+      console.error('An error occurred while fetching anime data:', error);
+   }
 
    return (
-      <>
+      <div className="max-w-[1200px] mx-auto">
          <div className="flex flex-col items-center text-center xl:flex xl:flex-row xl:justify-between xl:text-left mb-[10px] mt-10">
             <div>
                <h1 className="text-[40px] font-bold text-gray-700 px-1">
-                  {animeData.data.title}
+                  {animeData?.data.title}
                </h1>
                <p className="text-sm px-2 pb-2 text-gray-400">
-                  {animeData.data.aired.string}{' '}
+                  {animeData?.data.aired.string}{' '}
                   <span className="font-bold">&#183;</span>{' '}
-                  {animeData.data.duration}{' '}
+                  {animeData?.data.duration}{' '}
                   <span className="font-bold">&#183;</span>{' '}
                   <span className="bg-green-500 p-1 rounded text-white">
-                     {animeData.data.status}
+                     {animeData?.data.status}
                   </span>
                </p>
             </div>
@@ -45,7 +55,7 @@ export default async function AnimeDetail({ params }) {
                      </svg>
                      <p>
                         <span className="font-bold">
-                           {animeData.data.score}
+                           {animeData?.data.score}
                         </span>
                         /10
                      </p>
@@ -53,12 +63,12 @@ export default async function AnimeDetail({ params }) {
                </div>
             </div>
          </div>
-         <div className="flex flex-col lg:flex lg:flex-row lg:space-x-2 relative">
-            <div className="flex justify-center">
-               <div className="min-w-[300px] w-2/5">
-                  <Link
+         <div className="flex justify-center">
+            <div className="flex flex-col lg:flex lg:flex-row lg:space-x-2 relative">
+               <div className="max-w-[300px]">
+                  <a
                      href={
-                        animeData.data?.trailer.url
+                        animeData?.data?.trailer.url
                            ? animeData.data.trailer.url
                            : '#'
                      }
@@ -75,27 +85,26 @@ export default async function AnimeDetail({ params }) {
                         }}
                         className="rounded"
                      />
-                  </Link>
-                  {/* -bottom-3" */}
+                  </a>
                   <p className="absolute top-0">
                      <AddToList animeDetails={animeData} />
                   </p>
                </div>
-            </div>
-
-            <div className="w-full flex justify-center">
-               <iframe
-                  src={`${animeData.data?.trailer.embed_url}&mute=1`}
-                  className="w-full h-full rounded xs:min-w-[300px] md:min-h-[450px] sm:min-h-[450px] xs:min-h-[450px]"
-               />
+               <div className="w-full  lg:w-[500px]">
+                  <iframe
+                     src={`${animeData?.data?.trailer.embed_url}&mute=1`}
+                     className="w-full h-full rounded xs:min-w-[300px] md:min-h-[450px] sm:min-h-[450px] xs:min-h-[450px]"
+                  />
+               </div>
             </div>
          </div>
+
          <div>
             <div>
                <h1 className="text-lg font-bold py-2">Synopsis</h1>
-               <p className="pt-2">{animeData.data.synopsis}</p>
+               <p className="pt-2">{animeData?.data.synopsis}</p>
             </div>
          </div>
-      </>
+      </div>
    );
 }
