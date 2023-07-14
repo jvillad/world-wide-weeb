@@ -11,8 +11,10 @@ export default function page() {
 
    const handleSubmit = async (e) => {
       e.preventDefault();
+      setError(false);
+      setMessage('');
       try {
-         const response = await fetch('http://localhost:3000/api/create', {
+         const response = await fetch('/api/create', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, password }),
