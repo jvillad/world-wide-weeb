@@ -29,12 +29,12 @@ export async function POST(request) {
          data: {
             name,
             email,
-            password: hashedPassword,
+            hashedPassword: hashedPassword,
          },
       });
 
       return NextResponse.json(
-         { message: `${user.name} created successfully` },
+         { message: 'Account created successfully' },
          { status: 201 }
       );
    } catch (error) {
