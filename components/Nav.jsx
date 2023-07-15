@@ -2,9 +2,13 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import SearchAnime from './SearchAnime';
+import { useSession, signOut } from 'next-auth/react';
 
 function Nav() {
    const [nav, setNav] = useState(false);
+   const { data: session } = useSession();
+   const [showDropdown, setShowDropdown] = useState(false);
+
    return (
       <nav className="py-5 w-full absolute top-0">
          <div className="bg-gradient-to-r from-gray-900 via-purple-600 to-pink-700 opacity-85">
@@ -61,18 +65,76 @@ function Nav() {
 
                {/* third child element for auths - secondary nav*/}
                <div className="hidden items-center lg:flex mr-5">
-                  <Link
-                     href="/login"
-                     className="p-5 text-white font-semibold hover:text-gray-900 mr-5"
-                  >
-                     Login
-                  </Link>
-                  <a
-                     href="/register"
-                     className="py-2 px-4 bg-[#ff9f1c] text-[#011627] rounded-lg text-sm font-semibold"
-                  >
-                     Signup
-                  </a>
+                  {session ? (
+                     <div className="flex items-center">
+                        <Link
+                           href="/"
+                           className="p-5 text-white font-semibold hover:text-gray-900 mr-5 flex items-center gap-2"
+                        >
+                           <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              fill="currentColor"
+                              className="bi bi-bookmark-plus"
+                              viewBox="0 0 16 16"
+                           >
+                              <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z" />
+                              <path d="M8 4a.5.5 0 0 1 .5.5V6H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V7H6a.5.5 0 0 1 0-1h1.5V4.5A.5.5 0 0 1 8 4z" />
+                           </svg>
+                           Watchlist
+                        </Link>
+
+                        <div className="relative">
+                           <button
+                              onClick={() => setShowDropdown(!showDropdown)}
+                              className=" text-white font-semibold hover:text-gray-900 flex items-center gap-2"
+                           >
+                              <svg
+                                 xmlns="http://www.w3.org/2000/svg"
+                                 width="24"
+                                 height="24"
+                                 fill="currentColor"
+                                 className="bi bi-person-circle"
+                                 viewBox="0 0 16 16"
+                              >
+                                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                 <path
+                                    fill-rule="evenodd"
+                                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+                                 />
+                              </svg>
+                              {session.user.name}
+                           </button>
+                           {/* Dropdown Menu */}
+                           {showDropdown && (
+                              <div className="absolute  mt-2  bg-white rounded shadow-lg">
+                                 <button
+                                    className="block px-4 py-2 text-gray-800 hover:bg-gray-200 w-32"
+                                    onClick={async () => await signOut()}
+                                 >
+                                    Sign Out
+                                 </button>
+                              </div>
+                           )}
+                        </div>
+                     </div>
+                  ) : (
+                     <div>
+                        <Link
+                           href="/login"
+                           className="p-5 text-white font-semibold hover:text-gray-900 mr-5"
+                        >
+                           Login
+                        </Link>
+                        <Link
+                           href="/register"
+                           className="py-2 px-4 bg-[#ff9f1c] text-[#011627] rounded-lg text-sm font-semibold"
+                        >
+                           Signup
+                        </Link>
+                     </div>
+                  )}
                </div>
 
                {/* mobile nav */}
