@@ -1,15 +1,20 @@
 'use client';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function page() {
-   const [name, setName] = useState('');
-   const [password, setPassword] = useState('');
-   const [email, setEmail] = useState('');
+   const router = useRouter();
+   const [user, setUser] = useState({
+      name: '',
+      email: '',
+      password: '',
+   });
+
    const [displayNotif, setDisplayNotif] = useState(false);
    const [message, setMessage] = useState('');
-   const [error, setError] = useState(false);
+   const [error, setError] = useState();
 
-   const handleSubmit = async (e) => {
+   const registerUser = async (e) => {
       e.preventDefault();
       setError(false);
       setMessage('');
@@ -17,15 +22,18 @@ export default function page() {
          const response = await fetch('/api/create', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, password }),
+            body: JSON.stringify(user),
          });
          setDisplayNotif(true);
          if (response.ok) {
-            const data = await response.json();
-            setName('');
-            setPassword('');
-            setEmail('');
-            setMessage(data.message);
+            const status = await response.json();
+            console.log(status);
+            setUser({
+               name: '',
+               email: '',
+               password: '',
+            });
+            setMessage(status.message);
          } else {
             const errorData = await response.json();
             console.error(errorData);
@@ -54,7 +62,7 @@ export default function page() {
                Create Your Account
             </h2>
 
-            <form className="space-y-5" onSubmit={handleSubmit}>
+            <form className="space-y-5" onSubmit={registerUser}>
                <div>
                   <label className="block mb-1 font-bold text-gray-500">
                      Name
@@ -65,8 +73,10 @@ export default function page() {
                      type="text"
                      required
                      autoComplete="name"
-                     value={name}
-                     onChange={(e) => setName(e.target.value)}
+                     value={user.name}
+                     onChange={(e) =>
+                        setUser({ ...user, name: e.target.value })
+                     }
                      className="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500"
                   />
                </div>
@@ -81,8 +91,10 @@ export default function page() {
                      required
                      type="email"
                      autoComplete="email"
-                     value={email}
-                     onChange={(e) => setEmail(e.target.value)}
+                     value={user.email}
+                     onChange={(e) =>
+                        setUser({ ...user, email: e.target.value })
+                     }
                      className="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500"
                   />
                </div>
@@ -97,8 +109,10 @@ export default function page() {
                      required
                      autoComplete=""
                      type="password"
-                     value={password}
-                     onChange={(e) => setPassword(e.target.value)}
+                     value={user.password}
+                     onChange={(e) =>
+                        setUser({ ...user, password: e.target.value })
+                     }
                      className="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-purple-500"
                   />
                </div>
