@@ -1,5 +1,5 @@
 {
-   "name": "movie-list",
+   "name": "anime-list",
    "version": "0.1.0",
    "private": true,
    "scripts": {
@@ -10,6 +10,7 @@
       "postinstall": "prisma generate"
    },
    "dependencies": {
+      "@next-auth/prisma-adapter": "^0.4.4-canary.81",
       "@next/font": "^13.1.5",
       "@prisma/client": "^4.16.2",
       "@types/react": "^18.0.27",
