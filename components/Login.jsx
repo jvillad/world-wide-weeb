@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { signIn } from 'next-auth/react';
 export default function Login() {
    const [user, setUser] = useState({
       email: '',
@@ -9,23 +10,11 @@ export default function Login() {
 
    const [loading, setLoading] = useState(false);
    const router = useRouter();
-   const onLogin = async (e) => {
+   const loginUser = async (e) => {
       e.preventDefault();
-      try {
-         setLoading(true);
-         const response = await fetch('/api/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(user),
-         });
-         console.log('Login success', response);
-         router.push('/');
-      } catch (error) {
-         console.log('Login failed', error.message);
-         toast.error(error.message);
-      } finally {
-         setLoading(false);
-      }
+
+      signIn('credentials', { ...user, redirect: false });
+      router.push('/');
    };
 
    return (
@@ -40,11 +29,11 @@ export default function Login() {
                      </h1>
                      <form
                         className="space-y-4 md:space-y-6"
-                        onSubmit={onLogin}
+                        onSubmit={loginUser}
                      >
                         <div>
                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                              Your email
+                              Email
                            </label>
                            <input
                               type="email"
