@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 export default function Login() {
@@ -9,21 +9,49 @@ export default function Login() {
    });
 
    const [loading, setLoading] = useState(false);
+   const [error, setError] = useState('');
    const router = useRouter();
+   useEffect(() => {
+      if (loading) {
+         const login = async () => {
+            const result = await signIn('credentials', {
+               ...user,
+               redirect: false,
+            });
+
+            if (result?.error) {
+               setError(result.error);
+            } else {
+               router.push('/');
+            }
+
+            setLoading(false);
+         };
+
+         login();
+      }
+   }, [loading]);
+
    const loginUser = async (e) => {
       e.preventDefault();
-
-      signIn('credentials', { ...user, redirect: false });
-      router.push('/');
+      setLoading(true);
    };
 
    return (
       <div>
-         <h1>{loading && 'Loading...'}</h1>
+         {loading && (
+            <div className="loading-overlay">
+               <div className="loading-spinner"></div>
+            </div>
+         )}
+
          <section className="bg-gray-50 dark:bg-gray-900">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 align-middle">
                <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                   <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+                     <h1 className="text-red-500 text-xl text-center font-semibold">
+                        {error && error}
+                     </h1>
                      <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white text-center">
                         Sign in to your account
                      </h1>
