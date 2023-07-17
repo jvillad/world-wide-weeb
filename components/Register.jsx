@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 
-export default function page() {
+export default function Register() {
    const [user, setUser] = useState({
       name: '',
       email: '',
@@ -31,7 +31,7 @@ export default function page() {
                email: '',
                password: '',
             });
-            setMessage(status.message);
+            setMessage(status?.message);
          } else {
             const errorData = await response.json();
             console.error(errorData);

@@ -41,7 +41,7 @@ model Session {
 model User {
   name                String?
   id                  String    @id @default(auto()) @map("_id") @db.ObjectId
-  hashedPassword      String
+  password            String
   emailVerified       DateTime?
   email               String?   @unique
   image               String?

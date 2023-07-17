@@ -1,6 +1,5 @@
 import AddToList from '@/components/AddToList';
 import Image from 'next/image';
-import Link from 'next/link';
 // TODO: add holder in case there's no available anime trailer
 // TODO: additional validation
 export default async function AnimeDetail({ params }) {
