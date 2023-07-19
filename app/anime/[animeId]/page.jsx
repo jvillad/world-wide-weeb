@@ -1,8 +1,12 @@
 import AddToList from '@/components/AddToList';
 import Image from 'next/image';
-// TODO: add holder in case there's no available anime trailer
-// TODO: additional validation
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { redirect } from 'next/navigation';
+
 export default async function AnimeDetail({ params }) {
+   const user = await getServerSession(authOptions);
+   if (user === null) return redirect('/login');
    const { animeId } = params;
    let animeData = null;
 
@@ -11,7 +15,7 @@ export default async function AnimeDetail({ params }) {
       if (!data.ok) {
          throw new Error('Failed to fetch anime data');
       }
-      console.log(data);
+
       animeData = await data.json();
    } catch (error) {
       console.error('An error occurred while fetching anime data:', error);
@@ -62,39 +66,35 @@ export default async function AnimeDetail({ params }) {
                </div>
             </div>
          </div>
-         <div className="flex justify-center">
-            <div className="flex flex-col lg:flex lg:flex-row lg:space-x-2 relative">
-               <div className="max-w-[300px]">
+         <div className="flex flex-col lg:flex lg:flex-row lg:space-x-2 relative">
+            <div className="flex justify-center">
+               <div>
                   <a
                      href={
                         animeData?.data?.trailer.url
-                           ? animeData.data.trailer.url
+                           ? animeData?.data.trailer.url
                            : '#'
                      }
                   >
                      <Image
-                        src={animeData.data.images.jpg.large_image_url}
-                        alt={animeData.data.title}
+                        src={animeData?.data.images.jpg.large_image_url}
+                        alt={animeData?.data.title}
                         width={425}
                         height={450}
                         priority
-                        style={{
-                           width: 425,
-                           height: 450,
-                        }}
-                        className="rounded"
+                        className="rounded h-full"
                      />
                   </a>
-                  <p className="absolute top-0">
+                  <div className="absolute top-0">
                      <AddToList animeDetails={animeData} />
-                  </p>
+                  </div>
                </div>
-               <div className="w-full  lg:w-[500px]">
-                  <iframe
-                     src={`${animeData?.data?.trailer.embed_url}&mute=1`}
-                     className="w-full h-full rounded xs:min-w-[300px] md:min-h-[450px] sm:min-h-[450px] xs:min-h-[450px]"
-                  />
-               </div>
+            </div>
+            <div className="w-full">
+               <iframe
+                  src={`${animeData?.data?.trailer.embed_url}&mute=1`}
+                  className="w-full h-full rounded  md:min-h-[450px] "
+               />
             </div>
          </div>
 
